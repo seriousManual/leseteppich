@@ -1,12 +1,12 @@
 <script lang='ts'>
     import type { TeppichData } from "./lib/data";
-    import { getMatrixByList, shuffle } from "./lib/util";
+    import { shuffle } from "./lib/util";
 
     const { teppich, back }: { teppich: TeppichData, back: () => void } = $props()
 
-    let matrix = $derived(getMatrixByList(teppich.phrases.length))
     let phrases = $state(shuffle(teppich.phrases))
-    let marked = $state<number | undefined>(undefined)
+    let availableForMarks = $state(teppich.phrases)
+    let marked = $state<string | undefined>(undefined)
 
     function shufflePhrases() {
         phrases = shuffle(phrases)
@@ -14,7 +14,15 @@
     }
 
     function mark(){
-        marked = Math.floor(Math.random() * phrases.length)
+        const newMark = availableForMarks[Math.floor(Math.random() * availableForMarks.length)]
+        availableForMarks = availableForMarks.filter(mark => mark !== newMark)
+        marked = newMark
+
+        if (availableForMarks.length === 0) {
+            console.log("alle geschafft!")
+            availableForMarks = phrases
+            marked = undefined
+        }
     }
 </script>
 
@@ -26,13 +34,17 @@
 </div>
 
 <div class='box entries' style="">
-    {#each phrases as phrase, i}
-        <div class="{i === marked ? 'marked' : ''}">{phrase}</div>
+    {#each phrases as phrase}
+        <div class="{phrase === marked ? 'marked' : ''}">{phrase}</div>
     {/each}
 </div>
 
 <button class="full" onclick={mark}>
-    Naechster
+    {#if marked}
+        Naechster ({phrases.length - availableForMarks.length} von {phrases.length} geschafft)
+    {:else}
+        Start
+    {/if}
 </button>
 
 <style>
