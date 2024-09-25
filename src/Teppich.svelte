@@ -6,24 +6,40 @@
 
     let matrix = $derived(getMatrixByList(teppich.phrases.length))
     let phrases = $state(shuffle(teppich.phrases))
+    let marked = $state<number | undefined>(undefined)
 
     function shufflePhrases() {
         phrases = shuffle(phrases)
+        marked = undefined
+    }
+
+    function mark(){
+        marked = Math.floor(Math.random() * phrases.length)
     }
 </script>
 
 <h1>{teppich.title}</h1>
 
-<button onclick={back}>back</button>
-<button onclick={shufflePhrases}>shuffle</button>
+<div class="buttons">
+    <button onclick={back}>Zurueck</button>
+    <button onclick={shufflePhrases}>Mischen</button>
+</div>
 
 <div class='box entries' style="grid-template-columns: repeat({matrix.width}, 1fr); grid-template-rows: repeat({matrix.height}, 1fr)">
-    {#each phrases as phrase}
-        <div>{phrase}</div>
+    {#each phrases as phrase, i}
+        <div class="{i === marked ? 'marked' : ''}">{phrase}</div>
     {/each}
 </div>
 
+<button class="full" onclick={mark}>
+    Naechster
+</button>
+
 <style>
+    .buttons {
+        margin-bottom: 1rem;
+    }
+
     .entries {
         display: grid;
         gap: 0.8rem;
@@ -40,5 +56,9 @@
         padding: 1.2rem;
         font-size: 1.5rem;
         border-radius: 0.3rem;
+    }
+
+    .entries div.marked {
+        background-color: yellow;
     }
 </style>
