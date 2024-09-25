@@ -1,0 +1,43 @@
+html{
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 1rem;
+}
+
+#app {
+    height: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    html{
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+    html{
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1200px) {
+    html{
+        font-size: 26px;
+    }
+}
+
+.box {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
