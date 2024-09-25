@@ -25,7 +25,7 @@
     <button onclick={shufflePhrases}>Mischen</button>
 </div>
 
-<div class='box entries' style="grid-template-columns: repeat({matrix.width}, 1fr); grid-template-rows: repeat({matrix.height}, 1fr)">
+<div class='box entries' style="">
     {#each phrases as phrase, i}
         <div class="{i === marked ? 'marked' : ''}">{phrase}</div>
     {/each}
@@ -42,6 +42,7 @@
 
     .entries {
         display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)); /* Adjust 200px to your desired minimum size */
         gap: 0.8rem;
         height: 100%;
         width: 100%;

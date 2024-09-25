@@ -17,13 +17,13 @@ h1 {
     font-size: 2rem;
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 600px) {
     html{
         font-size: 18px;
     }
 }
 
-@media (min-width: 900px) and (max-width: 1200px) {
+@media (min-width: 900px) {
     html{
         font-size: 22px;
     }
