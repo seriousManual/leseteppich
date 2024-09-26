@@ -26,38 +26,65 @@
     }
 </script>
 
-<h1>{teppich.title}</h1>
+<div class="main">
+    <h1>{teppich.title}</h1>
 
-<div class="buttons">
-    <button onclick={back}>Zurueck</button>
-    <button onclick={shufflePhrases}>Mischen</button>
+    <div class="buttons">
+        <button onclick={back}>Zurueck</button>
+        <button onclick={shufflePhrases}>Mischen</button>
+    </div>
+
+    <div class='box entries' style="">
+        {#each phrases as phrase}
+            <div class="{phrase === marked ? 'marked' : ''}">{phrase}</div>
+        {/each}
+    </div>
+
+    <button class="full" onclick={mark}>
+        {#if marked}
+            Naechster ({phrases.length - availableForMarks.length} von {phrases.length} geschafft)
+        {:else}
+            Start
+        {/if}
+    </button>
 </div>
-
-<div class='box entries' style="">
-    {#each phrases as phrase}
-        <div class="{phrase === marked ? 'marked' : ''}">{phrase}</div>
-    {/each}
-</div>
-
-<button class="full" onclick={mark}>
-    {#if marked}
-        Naechster ({phrases.length - availableForMarks.length} von {phrases.length} geschafft)
-    {:else}
-        Start
-    {/if}
-</button>
 
 <style>
-    .buttons {
-        margin-bottom: 1rem;
+    .main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .buttons {
+            margin-bottom: 1rem;
+        }
     }
 
     .entries {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)); /* Adjust 200px to your desired minimum size */
+        grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
         gap: 0.8rem;
         height: 100%;
         width: 100%;
+        overflow: auto;
+    }
+
+    @media (min-width: 600px) {
+        .entries {
+            grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+        }
+    }
+
+    @media (min-width: 900px) {
+        .entries {
+            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .entries {
+            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+        }
     }
 
     .entries div {
