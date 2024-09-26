@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { TeppichData } from "./lib/data";
-    import Teppich from "./Teppich.svelte";
 
     interface Props {
         teppichs: TeppichData[]
@@ -15,21 +14,33 @@
 <div class='box'>
     <ul>
         {#each teppichs as teppich, i}
-                <li onclick={() => onTeppichSelect(i)}>
-                    {teppich.title}
-                </li>
+            <li onclick={() => onTeppichSelect(i)}>
+                {teppich.title}
+            </li>
         {/each}
     </ul>
 </div>
 
 <style>
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 0.8rem;
+        height: 100%;
+        width: 100%;
+    }
+
+    @media (min-width: 600px) {
+        .entries {
+            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        }
+    }
+
     li {
         padding: 0.7rem;
         background-color: rgb(224, 224, 224);
-        margin-bottom: 0.9rem;
-        /* border: 1px solid #ccc; */
-        border-radius: 0; /* No rounded corners for items */
         cursor: pointer;
+        width: 100%;
     }
 
     li:last-child {
