@@ -14,12 +14,13 @@ export function getMatrixByList(listLength: number): Matrix {
     return { width, height }
 }
 
-export function shuffle(list: any[]) {
-    for (let i = list.length - 1; i > 0; i--) {
+export function shuffle<T>(list: T[]): T[] {
+    const copy = [...list]
+    for (let i = copy.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         
-        [list[i], list[j]] = [list[j], list[i]];
+        [copy[i], copy[j]] = [copy[j], copy[i]];
     }
 
-    return list;
+    return copy;
 }

@@ -1,10 +1,36 @@
 {
-    "title": "Vierbuchstabige Wörter",
-    "phrases": [
-      "baum", "haus", "ring", "bald", "fest",
-      "sitz", "boot", "kalt", "wand", "hand",
-      "mund", "sand", "heft", "ofen", "kamm",
-      "name", "floh", "weit", "zelt", "kind"
-    ]
-  }
-  
+  "title": "Vier Buchstaben",
+  "comment": "(ohne c, k, v, y, x, z, h, ck, ch, mm, ss, pp, nn, ll, aa, oo, tz, ie, ei, eu)",
+  "phrases": [
+    "bald", "fund", "rund", "glas", "sand",
+    "mast", "rost", "trop", "ganz",
+    "gast", "list", "rabe", "rose",
+    "band", "lauf", "baum", "lost", "fand",
+    "nest", "lose", "rand", "lisp", "mast",
+    "rufe", "born", "rate", "lade",
+    "dose", "bene", "bang", "glas",
+    "bote", "stau", "tram",
+    "samt", "brot", "bild",
+    "mast", "glas", "gang", "mast", "raue",
+    "rast", "bunt", "lade", "rand",
+    "sand", "dame", "rast", "rose", "list",
+    "sage", "ofen", "brot", "band", "trop",
+    "gute", "bund", "ring", "baum",
+    "land", "rabe", "gast", "rast", "brot",
+    "sand", "bald", "nest", "land",
+    "raue", "gast", "rost", "list", "bunt",
+    "tram", "bild",
+    "band", "lauf", "brot", "dose", "fund",
+    "mast", "glas", "bund", "rufe", "sand",
+    "dame", "sage", "bild", "bote",
+    "nest", "lade", "tram",
+    "brot", "ring", "list", "rast", "fund",
+    "bald", "lost", "dose", "mast",
+    "bild", "glas", "nest", "rand",
+    "rose", "sage", "sand", "rast",
+    "rabe", "bild", "lauf", "bote", "brot",
+    "fund", "band", "ring", "list",
+    "nest", "dose", "bald", "land",
+    "glas", "tram", "lade", "ganz", "brot"
+  ]
+}

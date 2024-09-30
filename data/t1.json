@@ -1,9 +1,44 @@
 {
-    "title": "Einfache Silbenkombinationen",
-    "phrases": [
-      "ma", "me", "mi", "mo", "mu",
-      "sa", "se", "si", "so", "su",
-      "ta", "te", "ti", "to", "tu",
-      "pa", "pe", "pi", "po", "pu"
-    ]
-  }
+  "title": "Zweibuchstabige Kombinationen",
+  "comment": "(keine c,k,x,y)",
+  "phrases": [
+    "am", "an", "as", "ab", "ah",
+    "da", "du", "de", "di", "do",
+    "es", "er", "ei", "em", "eh",
+    "im", "in", "is", "id", "il",
+    "ja", "je", "jo", "la", "le",
+    "li", "lo", "ma", "me", "mi",
+    "mu", "na", "ne", "ni", "nu",
+    "ob", "oh", "ok", "on", "so",
+    "sa", "se", "si", "su", "ta",
+    "te", "to", "ti", "um", "us",
+    "wa", "we", "wo", "zu", "al",
+    "ar", "as", "at", "fa", "go",
+    "ha", "ho", "lo", "mo", "no",
+    "pa", "re", "ru", "si", "to",
+    "ut", "we", "al", "ar", "ab",
+    "an", "im", "ob", "um", "es",
+    "er", "am", "la", "li", "le",
+    "ha", "he", "ho", "hi", "na",
+    "ne", "ni", "no", "sa", "so",
+    "se", "si", "tu", "to", "ti",
+    "da", "de", "di", "do", "lu",
+    "lo", "li", "me", "mi", "ma",
+    "mo", "nu", "no", "ne", "na",
+    "ra", "re", "ri", "ro", "ru",
+    "su", "so", "sa", "se", "si",
+    "ba", "be", "bi", "bo", "bu",
+    "du", "do", "da", "de", "di",
+    "fe", "fo", "fa", "fi", "he",
+    "ho", "hi", "ha", "je", "jo",
+    "ja", "ka", "ke", "ki", "ko",
+    "ku", "le", "li", "lo", "lu",
+    "mu", "ma", "me", "mi", "mo",
+    "na", "ne", "ni", "no", "nu",
+    "pa", "pe", "pi", "po", "pu",
+    "ra", "re", "ri", "ro", "ru",
+    "sa", "se", "si", "so", "su",
+    "ta", "te", "ti", "to", "tu",
+    "wa", "we", "wo", "zu"
+  ]
+}
