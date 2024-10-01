@@ -23,8 +23,6 @@
   let current = $derived(phrases.find((phrase) => phrase.state === "current"));
   let solved = $derived(phrases.filter((phrase) => phrase.state === "read"));
 
-  $inspect(unsolved, current, solved)
-
   function initiate() {
     phrases = generate();
   }
