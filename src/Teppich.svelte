@@ -131,7 +131,7 @@
       }
 
       &.solved {
-        opacity: 0.3;
+        opacity: 0.1;
       }
     }
   }
