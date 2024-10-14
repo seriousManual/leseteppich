@@ -1,6 +1,7 @@
 {
   "title": "Dreibuchstabige Wörter",
   "comment": "(ohne x, y, z, c, v, ei, ie, ck, ch)",
+  "splitable": true,
   "phrases": [
     "man", "hat", "ton", "rot", "son",
     "tan", "ram", "ran", "kam", "lam",

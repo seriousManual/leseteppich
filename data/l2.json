@@ -1,0 +1,27 @@
+{
+  "title": "Leseteppich 2",
+  "comment": "",
+  "splitable": false,
+  "phrases": [
+    ["O", "le"],
+    ["Le", "o"],
+    ["Lo", "la"],
+    ["Le", "a"],
+    ["Le", "le"],
+    ["E", "la"],
+    ["La", "le"],
+    ["El", "la"],
+    ["al", "le"],
+    ["La", "le"],
+    ["La", "lo"],
+    ["Le", "o"],
+    ["O", "le"],
+    ["Le", "a"],
+    ["E", "le"],
+    ["E", "la"],
+    ["Lo", "lo"],
+    ["El", "o"],
+    ["Le", "lo"],
+    ["Lo", "la"]
+  ]
+}

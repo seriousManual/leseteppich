@@ -1,6 +1,7 @@
 {
   "title": "Zweibuchstabige Kombinationen",
   "comment": "(keine c,k,x,y)",
+  "splitable": true,
   "phrases": [
     "am", "an", "as", "ab", "ah",
     "da", "du", "de", "di", "do",

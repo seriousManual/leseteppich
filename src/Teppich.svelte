@@ -3,10 +3,12 @@
   import { shuffle } from "./lib/util";
 
   import { ConfettiExplosion } from "svelte-confetti-explosion";
+  import type { Phrase } from "../src/lib/data";
+    import PhraseVis from "./PhraseVis.svelte";
 
   interface PhraseState {
-    phrase: string;
-    state: "initial" | "current" | "read";
+    phrase: Phrase
+    state: "initial" | "current" | "read"
   }
 
   interface Props {
@@ -29,7 +31,7 @@
 
   function generate(): PhraseState[] {
     const shuffled = shuffle(teppich.phrases);
-    const sliced = shuffled.slice(0, 20);
+    const sliced = teppich.splitable ? shuffled.slice(0, 20) : shuffled
     const mapped = sliced.map((phrase) => ({ phrase, state: "initial" }));
 
     return mapped as PhraseState[];
@@ -74,7 +76,7 @@
         class:marked={phrase.state === 'current'}
         class:solved={phrase.state === 'read'}
       >
-        {phrase.phrase}
+        <PhraseVis phrase={phrase.phrase} />
       </div>
     {/each}
   </div>
