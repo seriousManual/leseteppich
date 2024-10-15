@@ -24,15 +24,15 @@
 <style>
     ul {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));        
         gap: 0.8rem;
         height: 100%;
         width: 100%;
     }
 
     @media (min-width: 600px) {
-        .entries {
-            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        ul {
+            grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
         }
     }
 
