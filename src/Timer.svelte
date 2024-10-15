@@ -71,6 +71,8 @@
 
     transition: width 0.5s;
 
+    cursor: pointer;
+
     &.activated {
       width: 5rem;
     }
