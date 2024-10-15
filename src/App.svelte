@@ -1,11 +1,14 @@
 <script lang="ts">
   import Teppich from './Teppich.svelte'
   import Teppiche from './Teppiche.svelte'
+  import Timer from './Timer.svelte'
 
   import teppichs from './lib/data'
 
   let currentTeppich = $state<number | undefined>(undefined)
 </script>
+
+<Timer />
 
 {#if currentTeppich !== undefined}
   <Teppich 
@@ -18,3 +21,4 @@
     onTeppichSelect={index => currentTeppich = index}
   />
 {/if}
+
