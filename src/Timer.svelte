@@ -1,31 +1,31 @@
 <script lang="ts">
-  const timerBase = 600
+  const timerBase = 600;
 
-  let activated = $state(false)
-  let finished = $state(false)
-  let time = $state(0)
-  let timeFormatted = $derived(formatTime(time))
+  let activated = $state(false);
+  let finished = $state(false);
+  let time = $state(0);
+  let timeFormatted = $derived(formatTime(time));
 
-  let timer: number | undefined = undefined
+  let timer: number | undefined = undefined;
 
   function activation() {
     if (activated) {
-      if (timer) clearInterval(timer)
-      activated = false
+      if (timer) clearInterval(timer);
+      activated = false;
     } else {
-      activated = true
+      activated = true;
       time = timerBase;
       timer = setInterval(() => {
         time--;
 
         if (time === 0) {
-          finished = true
-          clearInterval(timer)
+          finished = true;
+          clearInterval(timer);
 
           setTimeout(() => {
-            finished = false
-            activated = false
-          }, 4000)
+            finished = false;
+            activated = false;
+          }, 4000);
         }
       }, 1000);
     }
@@ -42,7 +42,7 @@
   }
 
   function pad(n: number) {
-    const s = String(n)
+    const s = String(n);
     return s.length === 1 ? `0${s}` : s;
   }
 </script>
@@ -83,7 +83,8 @@
   }
 
   @keyframes blink-animation {
-    0%,100% {
+    0%,
+    100% {
       background-color: red;
       color: white;
     }
