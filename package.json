@@ -10,9 +10,9 @@
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "svelte": "^5",
     "@tsconfig/svelte": "^5.0.4",
-    "svelte": "^5.0.0-next.259",
     "svelte-check": "^3.8.5",
     "tslib": "^2.6.3",
     "typescript": "^5.5.3",
