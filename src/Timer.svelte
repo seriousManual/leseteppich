@@ -87,10 +87,12 @@
     100% {
       background-color: red;
       color: white;
+      border: 0.3rem solid red;
     }
     50% {
       background-color: white;
       color: black;
+      border: 0.3rem solid white;
     }
   }
 </style>
