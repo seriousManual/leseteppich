@@ -61,7 +61,7 @@
 
   <div class="buttons">
     <button onclick={back}>Zurück</button>
-    <button onclick={initiate}>Mischen</button>
+    <button onclick={initiate}>Mischen {current ? "(+ reset)" : ""}</button>
   </div>
 
   {#if showConfetti}

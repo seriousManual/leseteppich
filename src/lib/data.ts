@@ -4,6 +4,7 @@ export type Phrase = string | string[]
 
 export interface TeppichData {
   title: string
+  splitable: boolean
   phrases: Phrase[]
 }
 
