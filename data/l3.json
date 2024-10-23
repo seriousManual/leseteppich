@@ -1,0 +1,39 @@
+{
+  "title": "Leseteppich 3",
+  "comment": "",
+  "splitable": false,
+  "phrases": [
+    ["O", "ma"],
+    ["Le", "o"],
+    ["Ma", "la"],
+    ["Le", "a"],
+    ["Ma", "ma"],
+    ["E", "la"],
+    ["A", "mo"],
+    ["La", "mo"],
+    ["Mo", "mo"],
+    ["Le", "ma"],
+    ["am"],
+    ["La", "ma"],
+    ["ma"],
+    ["mo"],
+    ["me"],
+    ["La", "lo"],
+    ["Lo", "mo"],
+    ["La", "ma"],
+    ["Le", "mo"],
+    ["E", "le"],
+
+    ["Lo", "ma"],
+    ["Me", "o"],
+    ["Ma", "mo"],
+    ["A", "ma"],
+    ["Mo", "ma"],
+
+    ["Le", "le"],
+    ["Ma", "lo"],
+    ["Lo", "la"],
+    ["Lo", "lo"],
+    ["Me", "a"]
+  ]
+}
