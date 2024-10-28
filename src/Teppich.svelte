@@ -4,7 +4,7 @@
 
   import { ConfettiExplosion } from "svelte-confetti-explosion";
   import type { Phrase } from "../src/lib/data";
-    import PhraseVis from "./PhraseVis.svelte";
+  import PhraseVis from "./PhraseVis.svelte";
 
   interface PhraseState {
     phrase: Phrase
@@ -20,10 +20,12 @@
 
   let showConfetti = $state(false);
   let phrases = $state(generate());
+  
+  let unreadEntries = $derived(phrases.filter((phrase) => phrase.state === "initial"));
+  let currentEntry = $derived(phrases.find((phrase) => phrase.state === "current"));
+  let readEntries = $derived(phrases.filter((phrase) => phrase.state === "read"));
 
-  let unsolved = $derived(phrases.filter((phrase) => phrase.state === "initial"));
-  let current = $derived(phrases.find((phrase) => phrase.state === "current"));
-  let solved = $derived(phrases.filter((phrase) => phrase.state === "read"));
+  let phraseContainers = $state<HTMLDivElement[]>([])
 
   function initiate() {
     phrases = generate();
@@ -38,11 +40,11 @@
   }
 
   function mark() {
-    if (current) {
-      current.state = "read";
+    if (currentEntry) {
+      currentEntry.state = "read";
     }
 
-    if (unsolved.length === 0) {
+    if (unreadEntries.length === 0) {
       showConfetti = true;
 
       setTimeout(() => {
@@ -50,8 +52,11 @@
         initiate()
       }, 3000);
     } else {
-      const next = unsolved[Math.floor(Math.random() * unsolved.length)];
+      const next = unreadEntries[Math.floor(Math.random() * unreadEntries.length)];
       next.state = 'current'
+
+      const currentPhraseContainer = phraseContainers[phrases.findIndex(phrase => phrase.state === "current")]
+      currentPhraseContainer?.scrollIntoView({behavior: 'smooth'})
     }
   }
 </script>
@@ -61,7 +66,7 @@
 
   <div class="buttons">
     <button onclick={back}>Zurück</button>
-    <button onclick={initiate}>Mischen {current ? "(+ reset)" : ""}</button>
+    <button onclick={initiate}>Mischen {currentEntry ? "(+ reset)" : ""}</button>
   </div>
 
   {#if showConfetti}
@@ -70,9 +75,10 @@
     </div>
   {/if}
 
-  <div class="box entries" style="">
-    {#each phrases as phrase}
+  <div class="box entries">
+    {#each phrases as phrase, i}
       <div 
+        bind:this={phraseContainers[i]}
         class:marked={phrase.state === 'current'}
         class:solved={phrase.state === 'read'}
       >
@@ -82,8 +88,8 @@
   </div>
 
   <button class="full" onclick={mark}>
-    {#if current}
-      Nächster ({solved.length} von {phrases.length} geschafft)
+    {#if currentEntry}
+      Nächster ({readEntries.length} von {phrases.length} geschafft)
     {:else}
       Start
     {/if}
@@ -102,7 +108,6 @@
   }
 
   .conf {
-    border: 1px solid red;
     width: 10px;
     margin: 0 auto;
   }
