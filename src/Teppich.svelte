@@ -12,7 +12,7 @@
   }
 
   interface Props {
-    teppich: TeppichData;
+    teppich: TeppichData; 
     back: () => void;
   }
 
