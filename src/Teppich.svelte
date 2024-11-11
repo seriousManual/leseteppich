@@ -5,6 +5,7 @@
   import { ConfettiExplosion } from "svelte-confetti-explosion";
   import type { Phrase } from "../src/lib/data";
   import PhraseVis from "./PhraseVis.svelte";
+  import tracking from "./lib/tracking";
 
   interface PhraseState {
     phrase: Phrase
@@ -31,6 +32,11 @@
     phrases = generate();
   }
 
+  function mix() {
+    initiate()
+    tracking.trackMix(teppich.id)
+  }
+
   function generate(): PhraseState[] {
     const shuffled = shuffle(teppich.phrases);
     const sliced = teppich.splitable ? shuffled.slice(0, 20) : shuffled
@@ -45,6 +51,7 @@
     }
 
     if (unreadEntries.length === 0) {
+      tracking.trackFinish(teppich.id)
       showConfetti = true;
 
       setTimeout(() => {
@@ -66,7 +73,7 @@
 
   <div class="buttons">
     <button onclick={back}>Zurück</button>
-    <button onclick={initiate}>Mischen {currentEntry ? "(+ reset)" : ""}</button>
+    <button onclick={mix}>Mischen {currentEntry ? "(+ reset)" : ""}</button>
   </div>
 
   {#if showConfetti}
