@@ -1,4 +1,5 @@
 {
+  "id": "t1",
   "title": "Zweibuchstabige Kombinationen",
   "comment": "(keine c,k,x,y)",
   "splitable": true,

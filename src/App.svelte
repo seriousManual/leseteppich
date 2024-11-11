@@ -1,24 +1,28 @@
 <script lang="ts">
-  import Teppich from './Teppich.svelte'
+  import { Router, Route, navigate } from "svelte-routing";
+
   import Teppiche from './Teppiche.svelte'
   import Timer from './Timer.svelte'
+  import TeppichWrapper from "./TeppichWrapper.svelte";
 
   import teppichs from './lib/data'
-
-  let currentTeppich = $state<number | undefined>(undefined)
 </script>
 
 <Timer />
 
-{#if currentTeppich !== undefined}
-  <Teppich 
-    teppich={teppichs[currentTeppich]}
-    back={() => currentTeppich = undefined}
-  />
-{:else}
-  <Teppiche 
-    teppichs={teppichs}
-    onTeppichSelect={index => currentTeppich = index}
-  />
-{/if}
+<Router>
+  <Route path="/">
+    <Teppiche 
+      teppichs={teppichs}
+      onTeppichSelect={id => navigate(`/teppich/${id}`)}
+    />
+  </Route>
+
+  <Route path="/teppich/:id" let:params>
+    <TeppichWrapper
+      teppich={teppichs.find(t => t.id === params.id)}
+      back={() => navigate('/')}
+    />
+  </Route>
+</Router>
 

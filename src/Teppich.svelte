@@ -12,11 +12,11 @@
   }
 
   interface Props {
-    teppich: TeppichData; 
+    teppich: TeppichData;
     back: () => void;
   }
 
-  const { teppich, back }: Props = $props();
+  let { teppich, back }: Props = $props();
 
   let showConfetti = $state(false);
   let phrases = $state(generate());
@@ -62,7 +62,7 @@
 </script>
 
 <div class="main">
-  <h1>{teppich.title}</h1>
+  <h1>{teppich?.title}</h1>
 
   <div class="buttons">
     <button onclick={back}>Zurück</button>

@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { navigate } from "svelte-routing";
+
   import type { TeppichData } from "./lib/data";
 
   interface Props {
     teppichs: TeppichData[];
-    onTeppichSelect: (index: number) => void;
+    onTeppichSelect: (id: string) => void;
   }
 
   const { teppichs, onTeppichSelect }: Props = $props();
@@ -13,8 +15,8 @@
 
 <div class="box">
   <ul>
-    {#each teppichs as teppich, i}
-      <li onclick={() => onTeppichSelect(i)}>
+    {#each teppichs as teppich}
+      <li onclick={() => onTeppichSelect(teppich.id)}>
         {teppich.title}
       </li>
     {/each}

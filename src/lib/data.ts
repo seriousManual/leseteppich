@@ -3,6 +3,7 @@ import dedupe from "dedupe"
 export type Phrase = string | string[]
 
 export interface TeppichData {
+  id: string
   title: string
   splitable: boolean
   phrases: Phrase[]
