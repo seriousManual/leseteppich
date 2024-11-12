@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Shell from "./lib/components/Shell.svelte"
   import type { TeppichData } from "./lib/data"
 
   interface Props {
@@ -9,42 +10,34 @@
   const { teppichs, onTeppichSelect }: Props = $props()
 </script>
 
-<svelte:head>
-  <title>Leseteppich</title> 
-</svelte:head>
-
-<h1>Teppiche</h1>
-
-<div class="box">
+<Shell title="Leseteppich">
   <ul>
     {#each teppichs as teppich}
-      <li onclick={() => onTeppichSelect(teppich.id)}>
+      <li class="beard" onclick={() => onTeppichSelect(teppich.id)}>
         {teppich.title}
       </li>
     {/each}
   </ul>
-</div>
+</Shell>
 
 <style>
-  ul {
+   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     gap: 0.8rem;
-    height: 100%;
-    width: 100%;
   }
-
+ 
   @media (min-width: 600px) {
     ul {
-      grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     }
   }
 
   li {
-    padding: 0.7rem;
-    background-color: rgb(224, 224, 224);
+    padding: 1.3rem 1rem;
     cursor: pointer;
     width: 100%;
+    font-size: 1.8rem;
   }
 
   li:last-child {

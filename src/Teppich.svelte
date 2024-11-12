@@ -1,11 +1,14 @@
 <script lang="ts">
+  import { ConfettiExplosion } from "svelte-confetti-explosion"
+
   import type { TeppichData } from "./lib/data"
   import { shuffle } from "./lib/util"
 
-  import { ConfettiExplosion } from "svelte-confetti-explosion"
   import type { Phrase } from "../src/lib/data"
   import PhraseVis from "./PhraseVis.svelte"
   import tracking from "./lib/tracking"
+  import Shell from "./lib/components/Shell.svelte";
+    import Timer from "./Timer.svelte";
 
   interface PhraseState {
     phrase: Phrase
@@ -30,11 +33,6 @@
 
   function initiate() {
     phrases = generate()
-  }
-
-  function mix() {
-    initiate()
-    tracking.trackMix(teppich.id)
   }
 
   function generate(): PhraseState[] {
@@ -71,36 +69,7 @@
   }
 </script>
 
-<svelte:head>
-  <title>Teppich - {teppich.title}</title> 
-</svelte:head>
-
-<div class="main">
-  <h1>{teppich.title}</h1>
-
-  <div class="buttons">
-    <button onclick={back}>Zurück</button>
-    <button onclick={mix}>Mischen {currentEntry ? "(+ reset)" : ""}</button>
-  </div>
-
-  {#if showConfetti}
-    <div class="conf">
-      <ConfettiExplosion duration={3000} stageHeight={400} stageWidth={600} />
-    </div>
-  {/if}
-
-  <div class="box entries">
-    {#each phrases as phrase, i}
-      <div 
-        bind:this={phraseContainers[i]}
-        class:marked={phrase.state === 'current'}
-        class:solved={phrase.state === 'read'}
-      >
-        <PhraseVis phrase={phrase.phrase} />
-      </div>
-    {/each}
-  </div>
-
+{#snippet footerContent()}
   <button class="full" onclick={mark}>
     {#if currentEntry}
       Nächster ({readEntries.length} von {phrases.length} geschafft)
@@ -108,7 +77,30 @@
       Start
     {/if}
   </button>
-</div>
+{/snippet}
+
+<Shell title={teppich.title} back={back} footer={footerContent}>
+  <div class="main">
+    {#if showConfetti}
+      <div class="conf">
+        <ConfettiExplosion duration={3000} stageHeight={400} stageWidth={600} />
+      </div>
+    {/if}
+
+    <div class="box entries">
+      {#each phrases as phrase, i}
+        <div 
+          class="beard"
+          bind:this={phraseContainers[i]}
+          class:marked={phrase.state === 'current'}
+          class:solved={phrase.state === 'read'}
+        >
+          <PhraseVis phrase={phrase.phrase} />
+        </div>
+      {/each}
+    </div>
+  </div>
+</Shell>
 
 <style>
   .main {
@@ -128,25 +120,26 @@
 
   .entries {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+    /* grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); */
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
-    height: 100%;
+    align-items: start;
     width: 100%;
-    overflow: auto;
 
     div {
       display: flex;
       justify-content: center;
       align-items: center;
 
-      background-color: rgb(224, 224, 224);
-      padding: 1.2rem;
-      font-size: 1.5rem;
-      border-radius: 0.3rem;
+      height: 5rem;
+      font-size: 1.8rem;
+      font-weight: light;
 
       &.marked {
-        background-color: yellow;
-        box-shadow: 0px 0px 2rem 0px #b0b0b0;
+        background-color: #FAD07E;
+        border: 0.15rem solid #FAD07E;
+        color: #fff;
+        /* box-shadow: 0px 0px 2rem 0px #b0b0b0; */
       }
 
       &.solved {
@@ -155,21 +148,22 @@
     }
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 400px) {
     .entries {
-      grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+      grid-template-columns: repeat(3, 1fr);
     }
   }
+
+  @media (min-width: 600px) {
+    .entries {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+    
 
   @media (min-width: 900px) {
     .entries {
-      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .entries {
-      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 </style>

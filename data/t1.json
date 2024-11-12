@@ -1,8 +1,9 @@
 {
   "id": "t1",
-  "title": "Zweibuchstabige Kombinationen",
+  "title": "Zwei Buchstaben",
   "comment": "(keine c,k,x,y)",
   "splitable": true,
+  "skip": true,
   "phrases": [
     "am", "an", "as", "ab",
     "da", "du", "de", "di", "do",

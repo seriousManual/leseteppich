@@ -1,8 +1,9 @@
 {
   "id": "t2",
-  "title": "Dreibuchstabige Wörter",
+  "title": "Drei Buchstaben",
   "comment": "(ohne x, y, z, c, v, ei, ie, ck, ch)",
   "splitable": true,
+  "skip": true,
   "phrases": [
     "man", "hat", "ton", "rot", "son",
     "tan", "ram", "ran", "kam", "lam",

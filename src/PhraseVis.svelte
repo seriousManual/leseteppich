@@ -20,7 +20,7 @@
 <style>
   div.withsyllabs {
     span:nth-child(odd) {
-      color: rgb(35, 35, 255);
+      color: #7382BF;
     }
   }
 </style>

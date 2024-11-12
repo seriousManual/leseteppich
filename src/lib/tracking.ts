@@ -1,10 +1,6 @@
 const mm = _paq ?? { push: (values: any[]) => console.debug('tracking: ', values) }
 
 const tracking = {
-  trackMix(id: string) {
-    mm.push(['trackEvent', 'teppich', 'mix', id])
-  },
-
   trackStart(id: string) {
     mm.push(['trackEvent', 'teppich', 'start', id])
   },

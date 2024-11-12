@@ -24,3 +24,18 @@ export function shuffle<T>(list: T[]): T[] {
 
   return copy
 }
+
+export function formatTime(timeInSeconds: number) {
+  const hours = Math.floor(timeInSeconds / 60)
+  const minutes = timeInSeconds - hours * 60
+
+  const hoursPadded = pad(hours)
+  const minutesPadded = pad(minutes)
+
+  return `${hoursPadded}:${minutesPadded}`
+}
+
+function pad(n: number) {
+  const s = String(n)
+  return s.length === 1 ? `0${s}` : s
+}

@@ -1,75 +1,40 @@
-<script lang="ts">
-    import tracking from "./lib/tracking";
+<script lang='ts'>
+  import MdWatchLater from 'svelte-icons/md/MdWatchLater.svelte'
 
-  const timerBase = 600
+  import tracking from './lib/tracking'
+  import timerState from './lib/timer.svelte'
+  import { formatTime } from './lib/util'
 
-  let activated = $state(false)
-  let finished = $state(false)
-  let time = $state(0)
-  let timeFormatted = $derived(formatTime(time))
+  const timer = timerState()
+  let timeFormatted = $derived(formatTime(timer.time))
 
-  let timer: number | undefined = undefined
+  function startTimer() {
+    if (timer.timerState === 'activated') return
 
-  function activation() {
-    if (activated) {
-      if (timer) clearInterval(timer)
-      activated = false
-    } else {
-      tracking.trackTimerStart()
-
-      activated = true
-      time = timerBase
-      timer = setInterval(() => {
-        time--
-
-        if (time === 0) {
-          finished = true
-          clearInterval(timer)
-          tracking.trackTimerFinished()
-
-          setTimeout(() => {
-            finished = false
-            activated = false
-          }, 4000)
-        }
-      }, 1000)
-    }
-  }
-
-  function formatTime(timeInSeconds: number) {
-    const hours = Math.floor(timeInSeconds / 60)
-    const minutes = timeInSeconds - hours * 60
-
-    const hoursPadded = pad(hours)
-    const minutesPadded = pad(minutes)
-
-    return `${hoursPadded}:${minutesPadded}`
-  }
-
-  function pad(n: number) {
-    const s = String(n)
-    return s.length === 1 ? `0${s}` : s
+    timer.startTimer()
+    tracking.trackTimerStart()
   }
 </script>
 
-<div class:activated class:finished onclick={activation}>
-  ⏱️
-  {#if activated}
+<div class:activated={timer.timerState === 'activated'} class:finished={timer.timerState === 'finished'} onclick={startTimer}>
+  {#if timer.timerState !== 'idle'}
     <span>{timeFormatted}</span>
+  {:else}
+    <MdWatchLater />
   {/if}
 </div>
 
 <style>
   div {
-    width: 2rem;
-    right: 0;
-    top: 1rem;
-    position: absolute;
-    border: 0.3rem solid rgb(35, 35, 255);
+    width: 4.5rem;
+    height: 3rem;
     border-right: 0;
-    padding: 0.2rem;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
+
+    font-size: 1rem;
+    
+    display: flex;
+    justify-content: center; /* Horizontally centers items */
+    align-items: center;    /* Vertically centers items */
 
     white-space: nowrap;
     overflow: hidden;
@@ -77,10 +42,7 @@
     transition: width 0.5s;
 
     cursor: pointer;
-
-    &.activated {
-      width: 5rem;
-    }
+    text-align: center;
 
     &.finished {
       animation: blink-animation 0.8s ease-in-out 0s 8 alternate;
@@ -98,6 +60,18 @@
       background-color: white;
       color: black;
       border: 0.3rem solid white;
+    }
+  }
+
+  @media (min-width: 600px) {
+    div {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 900px) {
+    div {
+      font-size: 3rem;
     }
   }
 </style>

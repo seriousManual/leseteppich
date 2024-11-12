@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { TeppichData } from "./lib/data"
+  import Shell from "./lib/components/Shell.svelte";
+import type { TeppichData } from "./lib/data"
   import Teppich from "./Teppich.svelte"
   
   interface Props {
@@ -11,8 +12,6 @@
 </script>
 
 {#if !teppich}
-  <h1>Upsi?</h1>
-
   <div class="box">
     <div>Ich m&ouml;chte diesen Teppich nicht kaufen.</div>
 
