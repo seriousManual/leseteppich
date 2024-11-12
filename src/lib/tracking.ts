@@ -1,10 +1,6 @@
 const mm = _paq ?? { push: (values: any[]) => console.debug('tracking: ', values) }
 
 const tracking = {
-  trackTeppichCall(id: string) {
-    mm.push(['trackEvent', 'navigate', 'teppich', id])
-  },
-
   trackMix(id: string) {
     mm.push(['trackEvent', 'teppich', 'mix', id])
   },
@@ -23,6 +19,12 @@ const tracking = {
 
   trackTimerFinished() {
     mm.push(['trackEvent', 'timer', 'finished'])
+  },
+
+  trackPage(url: string, title: string) {
+    mm.push(['setCustomUrl', url]);
+    mm.push(['setDocumentTitle', title]);
+    mm.push(['trackPageView']);
   }
 }
 

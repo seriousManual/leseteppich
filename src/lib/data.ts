@@ -18,4 +18,8 @@ const teppichs = Object.values(importedTeppichs)
     return copy
   })
 
+export function getTeppichById(id: string) {
+  return teppichs.find(t => t.id === id)
+}
+
 export default teppichs

@@ -71,8 +71,12 @@
   }
 </script>
 
+<svelte:head>
+  <title>Teppich - {teppich.title}</title> 
+</svelte:head>
+
 <div class="main">
-  <h1>{teppich?.title}</h1>
+  <h1>{teppich.title}</h1>
 
   <div class="buttons">
     <button onclick={back}>Zurück</button>

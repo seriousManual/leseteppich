@@ -5,7 +5,7 @@
   import Timer from './Timer.svelte'
   import TeppichWrapper from "./TeppichWrapper.svelte";
 
-  import teppichs from './lib/data'
+  import teppichs, { getTeppichById } from './lib/data'
   import tracking from './lib/tracking'
 </script>
 
@@ -16,8 +16,11 @@
     <Teppiche 
       teppichs={teppichs}
       onTeppichSelect={id => {
-        navigate(`/teppich/${id}`)
-        tracking.trackTeppichCall(id)
+        const url = `/teppich/${id}`
+        const teppich = getTeppichById(id)
+
+        tracking.trackPage(url, `Teppich - ${teppich?.title}`)
+        navigate(url)
       }}
     />
   </Route>
@@ -25,7 +28,12 @@
   <Route path="/teppich/:id" let:params>
     <TeppichWrapper
       teppich={teppichs.find(t => t.id === params.id)}
-      back={() => navigate('/')}
+      back={() => {
+        const url = '/'
+        
+        tracking.trackPage(url, 'Teppiche')
+        navigate(url)
+      }}
     />
   </Route>
 </Router>

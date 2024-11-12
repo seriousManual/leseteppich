@@ -9,6 +9,10 @@
   const { teppichs, onTeppichSelect }: Props = $props()
 </script>
 
+<svelte:head>
+  <title>Leseteppich</title> 
+</svelte:head>
+
 <h1>Teppiche</h1>
 
 <div class="box">
