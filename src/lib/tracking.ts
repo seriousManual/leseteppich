@@ -2,20 +2,28 @@ const mm = _paq ?? { push: (values: any[]) => console.debug('tracking: ', values
 
 const tracking = {
   trackTeppichCall(id: string) {
-    mm.push(['trackEvent', 'navigate', 'teppich', id]);
+    mm.push(['trackEvent', 'navigate', 'teppich', id])
   },
 
   trackMix(id: string) {
-    mm.push(['trackEvent', 'teppich', 'mix', id]);
+    mm.push(['trackEvent', 'teppich', 'mix', id])
   },
 
   trackStart(id: string) {
-    mm.push(['trackEvent', 'teppich', 'start', id]);
+    mm.push(['trackEvent', 'teppich', 'start', id])
   },
 
   trackFinish(id: string) {
-    mm.push(['trackEvent', 'teppich', 'finish', id]);
+    mm.push(['trackEvent', 'teppich', 'finish', id])
   },
+
+  trackTimerStart() {
+    mm.push(['trackEvent', 'timer', 'start'])
+  },
+
+  trackTimerFinished() {
+    mm.push(['trackEvent', 'timer', 'finished'])
+  }
 }
 
 export default tracking

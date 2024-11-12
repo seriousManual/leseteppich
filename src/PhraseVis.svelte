@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Phrase } from "./lib/data";
+  import type { Phrase } from "./lib/data"
 
   interface Props {
     phrase: Phrase

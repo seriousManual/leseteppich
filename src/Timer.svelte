@@ -1,49 +1,54 @@
 <script lang="ts">
-  const timerBase = 600;
+    import tracking from "./lib/tracking";
 
-  let activated = $state(false);
-  let finished = $state(false);
-  let time = $state(0);
-  let timeFormatted = $derived(formatTime(time));
+  const timerBase = 600
 
-  let timer: number | undefined = undefined;
+  let activated = $state(false)
+  let finished = $state(false)
+  let time = $state(0)
+  let timeFormatted = $derived(formatTime(time))
+
+  let timer: number | undefined = undefined
 
   function activation() {
     if (activated) {
-      if (timer) clearInterval(timer);
-      activated = false;
+      if (timer) clearInterval(timer)
+      activated = false
     } else {
-      activated = true;
-      time = timerBase;
+      tracking.trackTimerStart()
+
+      activated = true
+      time = timerBase
       timer = setInterval(() => {
-        time--;
+        time--
 
         if (time === 0) {
-          finished = true;
-          clearInterval(timer);
+          finished = true
+          clearInterval(timer)
+          tracking.trackTimerFinished()
 
           setTimeout(() => {
-            finished = false;
-            activated = false;
-          }, 4000);
+            finished = false
+            activated = false
+          }, 4000)
         }
-      }, 1000);
+      }, 1000)
     }
   }
 
   function formatTime(timeInSeconds: number) {
-    const hours = Math.floor(timeInSeconds / 60);
-    const minutes = timeInSeconds - hours * 60;
+    const hours = Math.floor(timeInSeconds / 60)
+    const minutes = timeInSeconds - hours * 60
 
-    const hoursPadded = pad(hours);
-    const minutesPadded = pad(minutes);
+    const hoursPadded = pad(hours)
+    const minutesPadded = pad(minutes)
 
-    return `${hoursPadded}:${minutesPadded}`;
+    return `${hoursPadded}:${minutesPadded}`
   }
 
   function pad(n: number) {
-    const s = String(n);
-    return s.length === 1 ? `0${s}` : s;
+    const s = String(n)
+    return s.length === 1 ? `0${s}` : s
   }
 </script>
 

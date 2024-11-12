@@ -1,14 +1,12 @@
 <script lang="ts">
-  import { navigate } from "svelte-routing";
-
-  import type { TeppichData } from "./lib/data";
+  import type { TeppichData } from "./lib/data"
 
   interface Props {
-    teppichs: TeppichData[];
-    onTeppichSelect: (id: string) => void;
+    teppichs: TeppichData[]
+    onTeppichSelect: (id: string) => void
   }
 
-  const { teppichs, onTeppichSelect }: Props = $props();
+  const { teppichs, onTeppichSelect }: Props = $props()
 </script>
 
 <h1>Teppiche</h1>

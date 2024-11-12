@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { TeppichData } from "./lib/data";
-  import { shuffle } from "./lib/util";
+  import type { TeppichData } from "./lib/data"
+  import { shuffle } from "./lib/util"
 
-  import { ConfettiExplosion } from "svelte-confetti-explosion";
-  import type { Phrase } from "../src/lib/data";
-  import PhraseVis from "./PhraseVis.svelte";
-  import tracking from "./lib/tracking";
+  import { ConfettiExplosion } from "svelte-confetti-explosion"
+  import type { Phrase } from "../src/lib/data"
+  import PhraseVis from "./PhraseVis.svelte"
+  import tracking from "./lib/tracking"
 
   interface PhraseState {
     phrase: Phrase
@@ -13,23 +13,23 @@
   }
 
   interface Props {
-    teppich: TeppichData;
-    back: () => void;
+    teppich: TeppichData
+    back: () => void
   }
 
-  let { teppich, back }: Props = $props();
+  let { teppich, back }: Props = $props()
 
-  let showConfetti = $state(false);
-  let phrases = $state(generate());
+  let showConfetti = $state(false)
+  let phrases = $state(generate())
   
-  let unreadEntries = $derived(phrases.filter((phrase) => phrase.state === "initial"));
-  let currentEntry = $derived(phrases.find((phrase) => phrase.state === "current"));
-  let readEntries = $derived(phrases.filter((phrase) => phrase.state === "read"));
+  let unreadEntries = $derived(phrases.filter((phrase) => phrase.state === "initial"))
+  let currentEntry = $derived(phrases.find((phrase) => phrase.state === "current"))
+  let readEntries = $derived(phrases.filter((phrase) => phrase.state === "read"))
 
   let phraseContainers = $state<HTMLDivElement[]>([])
 
   function initiate() {
-    phrases = generate();
+    phrases = generate()
   }
 
   function mix() {
@@ -38,28 +38,31 @@
   }
 
   function generate(): PhraseState[] {
-    const shuffled = shuffle(teppich.phrases);
+    const shuffled = shuffle(teppich.phrases)
     const sliced = teppich.splitable ? shuffled.slice(0, 20) : shuffled
-    const mapped = sliced.map((phrase) => ({ phrase, state: "initial" }));
+    const mapped = sliced.map((phrase) => ({ phrase, state: "initial" }))
 
-    return mapped as PhraseState[];
+    return mapped as PhraseState[]
   }
 
   function mark() {
+    // session started?
     if (currentEntry) {
-      currentEntry.state = "read";
+      currentEntry.state = "read"
+    } else {
+      tracking.trackStart(teppich.id)
     }
 
     if (unreadEntries.length === 0) {
       tracking.trackFinish(teppich.id)
-      showConfetti = true;
+      showConfetti = true
 
       setTimeout(() => {
-        showConfetti = false;
+        showConfetti = false
         initiate()
-      }, 3000);
+      }, 3000)
     } else {
-      const next = unreadEntries[Math.floor(Math.random() * unreadEntries.length)];
+      const next = unreadEntries[Math.floor(Math.random() * unreadEntries.length)]
       next.state = 'current'
 
       const currentPhraseContainer = phraseContainers[phrases.findIndex(phrase => phrase.state === "current")]

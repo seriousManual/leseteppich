@@ -1,13 +1,13 @@
 <script lang="ts">
-  import type { TeppichData } from "./lib/data";
-  import Teppich from "./Teppich.svelte";
+  import type { TeppichData } from "./lib/data"
+  import Teppich from "./Teppich.svelte"
   
   interface Props {
-    teppich: TeppichData | undefined;
-    back: () => void;
+    teppich: TeppichData | undefined
+    back: () => void
   }
 
-  let { teppich, back }: Props = $props();
+  let { teppich, back }: Props = $props()
 </script>
 
 {#if !teppich}
