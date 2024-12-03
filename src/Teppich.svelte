@@ -8,7 +8,6 @@
   import PhraseVis from "./PhraseVis.svelte"
   import tracking from "./lib/tracking"
   import Shell from "./lib/components/Shell.svelte";
-    import Timer from "./Timer.svelte";
 
   interface PhraseState {
     phrase: Phrase
@@ -19,6 +18,8 @@
     teppich: TeppichData
     back: () => void
   }
+
+  //hepp
 
   let { teppich, back }: Props = $props()
 
