@@ -86,4 +86,5 @@ button.full {
     box-shadow: 0px 0px 0.3rem 0px #C1C1F9;
     transition: background-color 0.2s ease, border 0.2s ease; /* Transition on both properties */
     color: #7382BF;
+    font-variant-ligatures: none;
 }
