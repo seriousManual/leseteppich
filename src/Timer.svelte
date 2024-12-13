@@ -26,15 +26,15 @@
 
 <style>
   div {
-    width: 4.5rem;
+    width: 3.5rem;
     height: 3rem;
     border-right: 0;
 
-    font-size: 1rem;
+    font-size: 1.5rem;
     
     display: flex;
-    justify-content: center; /* Horizontally centers items */
-    align-items: center;    /* Vertically centers items */
+    justify-content: flex-start;
+    align-items: center;
 
     white-space: nowrap;
     overflow: hidden;
@@ -42,7 +42,6 @@
     transition: width 0.5s;
 
     cursor: pointer;
-    text-align: center;
 
     &.finished {
       animation: blink-animation 0.8s ease-in-out 0s 8 alternate;
@@ -72,6 +71,7 @@
   @media (min-width: 900px) {
     div {
       font-size: 3rem;
+      width: 7rem;
     }
   }
 </style>
