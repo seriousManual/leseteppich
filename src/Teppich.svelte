@@ -19,13 +19,11 @@
     back: () => void
   }
 
-  //hepp
-
   let { teppich, back }: Props = $props()
 
   let showConfetti = $state(false)
   let phrases = $state(generate())
-  
+
   let unreadEntries = $derived(phrases.filter((phrase) => phrase.state === "initial"))
   let currentEntry = $derived(phrases.find((phrase) => phrase.state === "current"))
   let readEntries = $derived(phrases.filter((phrase) => phrase.state === "read"))
