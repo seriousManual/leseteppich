@@ -8,6 +8,6 @@ export default defineConfig({
     splitVendorChunkPlugin(),
   ],
   build: {
-    minify: false,
+    minify: true,
   },
 })
