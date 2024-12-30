@@ -20,6 +20,8 @@ const teppichs = Object.values(importedTeppichs)
     return copy
   })
 
+teppichs.sort((a, b) => b.id.localeCompare(a.id))
+
 export function getTeppichById(id: string) {
   return teppichs.find(t => t.id === id)
 }
