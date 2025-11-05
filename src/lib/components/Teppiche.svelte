@@ -23,7 +23,7 @@
 <style>
    ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
   }
  
