@@ -1,27 +1,21 @@
-const mm = _paq ?? { push: (values: any[]) => console.debug('tracking: ', values) }
+import { track } from '@vercel/analytics';
 
 const tracking = {
   trackStart(id: string) {
-    mm.push(['trackEvent', 'teppich', 'start', id])
+    track('teppich_start', { teppich_id: id });
   },
 
   trackFinish(id: string) {
-    mm.push(['trackEvent', 'teppich', 'finish', id])
+    track('teppich_finish', { teppich_id: id });
   },
 
   trackTimerStart() {
-    mm.push(['trackEvent', 'timer', 'start'])
+    track('timer_start');
   },
 
   trackTimerFinished() {
-    mm.push(['trackEvent', 'timer', 'finished'])
+    track('timer_finished');
   },
-
-  trackPage(url: string, title: string) {
-    mm.push(['setCustomUrl', url]);
-    mm.push(['setDocumentTitle', title]);
-    mm.push(['trackPageView']);
-  }
 }
 
-export default tracking
+export default tracking;

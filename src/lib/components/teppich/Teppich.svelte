@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { ConfettiExplosion } from "svelte-confetti-explosion"
+  import ConfettiExplosion from "svelte-confetti-explosion/ConfettiExplosion.svelte"
 
-  import type { TeppichData } from "./lib/data"
-  import { shuffle } from "./lib/util"
+  import type { TeppichData } from "$lib/data"
+  import { shuffle } from "$lib/util"
 
-  import type { Phrase } from "../src/lib/data"
-  import PhraseVis from "./PhraseVis.svelte"
-  import tracking from "./lib/tracking"
-  import Shell from "./lib/components/Shell.svelte";
+  import type { Phrase } from "$lib/data"
+  import PhraseVis from "$lib/components/teppich/PhraseVis.svelte"
+  import tracking from "$lib/tracking"
+  import Shell from "$lib/components/Shell.svelte";
 
   interface PhraseState {
     phrase: Phrase

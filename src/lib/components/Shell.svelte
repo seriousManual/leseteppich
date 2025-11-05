@@ -1,13 +1,13 @@
 <script lang="ts">
   import MdArrowBack from 'svelte-icons/md/MdArrowBack.svelte'
-  import Timer from '../../Timer.svelte';
+  import Timer from './teppich/Timer.svelte';
 
   interface Props {
     title: string
     children: any
     back?: () => void
     options?: any[]
-    footer: any
+    footer?: any
   }
 
   let { children, title, back, options, footer }: Props = $props()

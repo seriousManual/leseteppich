@@ -1,9 +1,9 @@
 <script lang='ts'>
   import MdWatchLater from 'svelte-icons/md/MdWatchLater.svelte'
 
-  import tracking from './lib/tracking'
-  import timerState from './lib/timer.svelte'
-  import { formatTime } from './lib/util'
+  import tracking from '$lib/tracking'
+  import timerState from '$lib/timer.svelte.js'
+  import { formatTime } from '$lib/util'
 
   const timer = timerState()
   let timeFormatted = $derived(formatTime(timer.time))

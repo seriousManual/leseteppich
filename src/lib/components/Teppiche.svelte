@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Shell from "./lib/components/Shell.svelte"
-  import type { TeppichData } from "./lib/data"
+  import Shell from "$lib/components/Shell.svelte"
+  import type { TeppichData } from "$lib/data"
 
   interface Props {
     teppichs: TeppichData[]
