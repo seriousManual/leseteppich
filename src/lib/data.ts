@@ -10,7 +10,7 @@ export interface TeppichData {
   phrases: Phrase[]
 }
 
-const importedTeppichs: Record<string, TeppichData> = import.meta.glob('../../data/*.json', {eager: true}) 
+const importedTeppichs = import.meta.glob('../../data/*.json', {eager: true, import: 'default'}) as Record<string, TeppichData>
 const teppichs = Object.values(importedTeppichs)
   .filter(entry => !entry.skip)
   .map(entry => {

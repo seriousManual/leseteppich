@@ -158,7 +158,6 @@
       grid-template-columns: repeat(4, 1fr);
     }
   }
-    
 
   @media (min-width: 900px) {
     .entries {
