@@ -21,10 +21,6 @@
 
 
 <div class="outer">
-  {#if devMode}
-    <div class="browser-sim top"></div>
-  {/if}
-
   <main>
     <div class="title">
       {#if back}
@@ -50,10 +46,6 @@
       </div>
     {/if}
   </main>
-
-  {#if devMode}
-    <div class="browser-sim bottom"></div>
-  {/if}
 </div>
 
 <style>
@@ -115,11 +107,6 @@
     display: flex;
     right: 1rem;
     gap: 0rem;
-  }
-
-  .browser-sim {
-    background-color: black;
-    height: 4rem;
   }
 
   @media (min-width: 600px) {

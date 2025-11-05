@@ -36,7 +36,7 @@ h1 {
 
 @media (min-width: 1200px) {
     html{
-        font-size: 26px;
+        font-size: 24px;
     }
 }
 
@@ -87,4 +87,7 @@ button.full {
     transition: background-color 0.2s ease, border 0.2s ease; /* Transition on both properties */
     color: #7382BF;
     font-variant-ligatures: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
